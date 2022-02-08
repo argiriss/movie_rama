@@ -1,36 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Movies</h1>
+<% @movies.each do |movie| %>
+  <h2><%= movie.title %></h2>
+  Posted by <%= link_to movie.user == current_user ? "You" : movie.user.name, movie.user %> 
+  <%= distance_of_time_in_words(movie.created_at, Time.now) %> ago
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>User</th>
-      <th>Publication Date</th>
-      <th>Number of likes</th>
-      <th>Number of hates</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.description %></td>
-        <td><%= link_to movie.user.name, movie.user %></td>
-        <td><%= movie.created_at.strftime("%d/%m/%Y") %></td>
-        <td><%= movie.number_of_likes %></td>
-        <td><%= movie.number_of_hates %></td>
-        <td><%= link_to "Show", movie %></td>
-        <td><%= link_to "Edit", edit_movie_path(movie) %></td>
-        <td><%= link_to "Destroy", movie, method: :delete, data: { confirm: "Are you sure?" } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <p><%= movie.description %></p>
+  
+  <%- if movie.number_of_likes == 0 && movie.number_of_hates == 0%>
+    Be the first to vote for this movie:
+  <% end %>
+  <%= movie.number_of_likes %> | <%= movie.number_of_hates %>
+<% end %>
 
 <br>
 
