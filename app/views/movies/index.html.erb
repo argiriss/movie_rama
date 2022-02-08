@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+Sort by:
+<%= link_to "Likes", sort: "number_of_likes desc"%> |
+<%= link_to "Hates", sort: "number_of_hates desc"%> |
+<%= link_to "Date", sort: "created_at desc"%>
+
 <% @movies.each do |movie| %>
   <h2><%= movie.title %></h2>
   Posted by <%= link_to movie.user == current_user ? "You" : movie.user.name, movie.user %> 

@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: %i[ new create destroy ]
 
   def index
-    @movies = Movie.all
+    @movies = Movie.order(params[:sort])
   end
 
   def show
