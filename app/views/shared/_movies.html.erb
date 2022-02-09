@@ -10,8 +10,22 @@ Sort by:
 
   <p><%= movie.description %></p>
   
-  <%- if movie.number_of_likes == 0 && movie.number_of_hates == 0%>
+  <%- if movie.number_of_likes == 0 && movie.number_of_hates == 0 %>
     Be the first to vote for this movie:
   <% end %>
   <%= movie.number_of_likes %> | <%= movie.number_of_hates %>
+
+  <% pre_like = movie.votes.find { |vote| vote.user_id == current_user.id && vote.vote_type == "like" } %>
+  <%- if pre_like %>
+    <%= link_to 'Unlike', movie_vote_path(movie, pre_like, vote_type: 0), method: :delete %>
+  <% else %>
+    <%= link_to 'Like', movie_votes_path(movie, vote_type: 0), method: :post %>
+  <% end %>
+
+  <% pre_hate = movie.votes.find { |vote| vote.user_id == current_user.id && vote.vote_type == "hate" } %>
+  <%- if pre_hate %>
+    <%= link_to 'Unhate', movie_vote_path(movie, pre_hate, vote_type: 1), method: :delete %>
+  <% else %>
+    <%= link_to 'Hate', movie_votes_path(movie, vote_type: 1), method: :post %>
+  <% end %>
 <% end %>
