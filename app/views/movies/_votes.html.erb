@@ -42,6 +42,8 @@
   <% end %>
 <% else %>
   <%- if movie.number_of_likes > 0 || movie.number_of_hates > 0 %>
-    <%= "#{movie.number_of_likes} #{like}" %> | <%= "#{movie.number_of_hates} #{hate}" %>
+    <div class= "col-md-12">
+      <%= "#{movie.number_of_likes} #{like}" %> | <%= "#{movie.number_of_hates} #{hate}" %>
+    </div>
   <% end %>
 <% end %>
