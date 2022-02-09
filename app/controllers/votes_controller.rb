@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_action :find_movie
+  before_action :authenticate_user!
   before_action :find_vote, only: [:destroy]
 
   def create
@@ -14,7 +15,7 @@ class VotesController < ApplicationController
         @movie.update(number_of_hates: @movie.number_of_hates + 1)
       end
     end
-    redirect_to movie_path(@movie)
+    redirect_to movies_path
   end
 
   def destroy
@@ -24,7 +25,7 @@ class VotesController < ApplicationController
       @vote.destroy
       params[:vote_type] == "0" ? @movie.update(number_of_likes: @movie.number_of_likes - 1) : @movie.update(number_of_hates: @movie.number_of_hates - 1)
     end
-    redirect_to movie_path(@movie)
+    redirect_to movies_path
   end
 
   private
