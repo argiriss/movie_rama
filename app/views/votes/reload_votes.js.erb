@@ -1,0 +1,2 @@
+var vote = document.querySelector(".vote-movie-" + <%= @movie.id %>);
+vote.innerHTML = "<%= j render 'movies/votes', movie: @movie %>";

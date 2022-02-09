@@ -15,7 +15,9 @@ class VotesController < ApplicationController
         @movie.update(number_of_hates: @movie.number_of_hates + 1)
       end
     end
-    redirect_to movies_path
+    respond_to do |format|
+      format.js { render layout: false, template: "votes/reload_votes" }
+    end
   end
 
   def destroy
@@ -25,7 +27,9 @@ class VotesController < ApplicationController
       @vote.destroy
       params[:vote_type] == "0" ? @movie.update(number_of_likes: @movie.number_of_likes - 1) : @movie.update(number_of_hates: @movie.number_of_hates - 1)
     end
-    redirect_to movies_path
+    respond_to do |format|
+      format.js { render layout: false, template: "votes/reload_votes" }
+    end
   end
 
   private

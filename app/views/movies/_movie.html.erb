@@ -6,7 +6,7 @@
     <p class="card-text">
       <%= movie.description %>
     </p>
-    <div class="row">
+    <div class="row vote-movie-<%= movie.id %>">
       <%= render partial: "movies/votes", locals: { movie: movie } %>
     </div>
   </div>
