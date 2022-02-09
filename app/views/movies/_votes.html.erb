@@ -23,12 +23,12 @@
         </div>
       <% end %>
       <%- if already_liked %>
-        <div class= "col-md-6 float-right">
+        <div class= "col-md-6 align-right">
           You like this movie | 
           <%= link_to "Unlike", movie_vote_path(movie, already_liked, vote_type: 0), method: :delete %>
         </div>
       <% elsif already_hated %>
-        <div class= "col-md-6 float-right">
+        <div class= "col-md-6 align-right">
           You hate this movie |
           <%= link_to "Unhate", movie_vote_path(movie, already_hated, vote_type: 1), method: :delete %>
         </div>

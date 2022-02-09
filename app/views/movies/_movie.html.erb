@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-2">
   <div class="card-body">
     <h4 class="card-title"><%= movie.title %></h4>
     Posted by <%= link_to movie.user == current_user ? "You" : movie.user.name, movie.user %> 

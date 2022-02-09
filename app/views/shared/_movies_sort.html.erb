@@ -1,7 +1,7 @@
 <%- if @movies.size > 0 %>
-  <div class="col-md-12">
+  <div class="col-md-12 mb-3">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body sort-body">
       Sort by:
         <%= link_to "Likes", sort: "number_of_likes desc"%> |
         <%= link_to "Hates", sort: "number_of_hates desc"%> |
