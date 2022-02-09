@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<%= render "shared/movies" %>
+<%= render "shared/movies_sort" %>
 
-<br>
+<div class="col-md-9">
+  <%= render "shared/movies" %>
+</div>
 
-<%= link_to "New Movie", new_movie_path %>
+<div class="col-md-3">
+  <%= link_to "New Movie", new_movie_path, class: "btn btn-success" %>
+</div>

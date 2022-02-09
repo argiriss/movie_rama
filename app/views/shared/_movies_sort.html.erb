@@ -1,0 +1,12 @@
+<%- if @movies.size > 0 %>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+      Sort by:
+        <%= link_to "Likes", sort: "number_of_likes desc"%> |
+        <%= link_to "Hates", sort: "number_of_hates desc"%> |
+        <%= link_to "Date", sort: "created_at desc"%>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,16 +1,3 @@
-<%- if @movies.size > 0 %>
-  Sort by:
-  <%= link_to "Likes", sort: "number_of_likes desc"%> |
-  <%= link_to "Hates", sort: "number_of_hates desc"%> |
-  <%= link_to "Date", sort: "created_at desc"%>
-<% end %>
-
 <% @movies.each do |movie| %>
-  <h2><%= movie.title %></h2>
-  Posted by <%= link_to movie.user == current_user ? "You" : movie.user.name, movie.user %> 
-  <%= distance_of_time_in_words(movie.created_at, Time.now) %> ago
-
-  <p><%= movie.description %></p>
-
-  <%= render partial: "shared/movies_votes", locals: { movie: movie } %>
+  <%= render movie %>
 <% end %>
