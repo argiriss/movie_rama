@@ -25,8 +25,9 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails", "~> 3.9"
-  gem "shoulda-matchers", "~> 4.2"
+  gem "capybara", ">= 3.26"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
