@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :movies do
+    post "/vote_other", to: "votes#vote_other"
     resources :votes
   end
   devise_for :users
